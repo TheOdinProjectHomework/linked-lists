@@ -7,17 +7,14 @@ class Node {
     }
 }
 
-// const node1 = new Node("cris");
-// console.log(node1.value);
-
 class LinkedList {
     constructor() {
         this.head = null;
         this.size = 0;
     }
 
-    append(element) {
-        let newNode = new Node(element);
+    append(data) {
+        let newNode = new Node(data);
         let current;
         if (this.head === null) {
             this.head = newNode;
@@ -31,8 +28,8 @@ class LinkedList {
         this.size++;
     }
 
-    prepend(element) {
-        let newNode = new Node(element);
+    prepend(data) {
+        let newNode = new Node(data);
         let current;
         if(this.head === null) {
             this.head = newNode;
@@ -64,6 +61,71 @@ class LinkedList {
         }
     }
 
+    at(index) {
+        let current = this.head;
+        let i = 0;
+        if(!current) {
+            return null;
+        }
+        while(current) {
+            if(i === index) {
+                return current;
+            } else {
+                i++;
+                current = current.next;
+            }
+        }
+        return null;
+    }
+
+    pop(data) {
+        if(this.head === null) {
+            return;
+        }
+        let current = this.head;
+        if(current.value === data) {
+            this.head = current.next;
+            return;
+        }
+        while(current.next) {
+            if(current.next.value === data) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+        return current;
+    }
+
+    contains(data) {
+        if(!this.head) {
+            return false;
+        } 
+        let current = this.head;
+        while(current) {
+            if(current.value === data) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    find(data) {
+        if(!this.head) return;
+        let current = this.head;
+        let index = 0;
+        while(current) {
+            if(current.value === data) {
+                return index;
+            } else {
+                index++;
+                current = current.next;
+            }
+        }
+        return null;
+    }
+
     toString() {
         let current = this.head;
         let str = "";
@@ -85,3 +147,10 @@ console.log(ll.size);
 ll.toString();
 console.log(ll.head);
 console.log(ll.tail());
+ll.toString();
+ll.pop('four');
+ll.toString();
+console.log(ll.contains('one'));
+console.log(ll.contains('two'));
+console.log(ll.find('one'));
+console.log(ll.at(1));
