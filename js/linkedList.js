@@ -1,11 +1,4 @@
-console.log("Hello Linked Lists!");
-
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-    }
-}
+import Node from "./node.js";
 
 class LinkedList {
     constructor() {
@@ -137,20 +130,4 @@ class LinkedList {
     }
 }
 
-let ll = new LinkedList();
-ll.append('one');
-console.log(ll.head);
-ll.prepend('two');
-ll.prepend('three');
-ll.append('four');
-console.log(ll.size);
-ll.toString();
-console.log(ll.head);
-console.log(ll.tail());
-ll.toString();
-ll.pop('four');
-ll.toString();
-console.log(ll.contains('one'));
-console.log(ll.contains('two'));
-console.log(ll.find('one'));
-console.log(ll.at(1));
+export default LinkedList;
